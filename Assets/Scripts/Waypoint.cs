@@ -6,6 +6,9 @@ public class Waypoint : MonoBehaviour {
 
     public bool isExplored = false;
     public Waypoint exploredFrom;
+    public bool isPlaceable = true;
+
+    [SerializeField] Tower towerPrefab;
 
     Vector2Int gridPos;
 
@@ -33,4 +36,23 @@ public class Waypoint : MonoBehaviour {
        MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
        topMeshRenderer.material.color = color;
     }
+
+    void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (isPlaceable)
+            {
+                Debug.Log(gameObject.name + " You can place here!");
+                Instantiate(towerPrefab, transform.position, Quaternion.identity);
+                isPlaceable = false;
+            }
+
+            else
+            {
+                Debug.Log(gameObject.name + " No way hose!");
+            }
+        }
+    }
+
 }
