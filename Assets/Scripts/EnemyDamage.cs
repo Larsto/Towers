@@ -6,21 +6,31 @@ using UnityEngine;
 public class EnemyDamage : MonoBehaviour {
 
     [SerializeField] int hits = 5;
-    [SerializeField] GameObject explotion;
     [SerializeField] Collider body;
+    [SerializeField] ParticleSystem hitParticles;
+    [SerializeField] ParticleSystem deathParticle;
+
 
     private void OnParticleCollision(GameObject other)
     {
-        hits = hits - 1;
+        ProcessHit();
+        
         if (hits <= 0)
         {
             KillEnemy();
         }
     }
 
+    private void ProcessHit()
+    {
+        hitParticles.Play();
+        hits = hits - 1;
+    }
+
     private void KillEnemy()
     {
-        Instantiate(explotion, transform.position, Quaternion.identity);
+        var vfx = Instantiate(deathParticle, transform.position, Quaternion.identity);
+        vfx.Play();
         Destroy(gameObject);
     }
 }

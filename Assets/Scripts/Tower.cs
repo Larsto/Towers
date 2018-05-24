@@ -22,7 +22,7 @@ public class Tower : MonoBehaviour {
 
         if (targetEnemy)
         {
-            objectToPan.LookAt(targetEnemy);
+            LookAtEnemy();
             FireAtEnemy();
         }
 
@@ -32,6 +32,7 @@ public class Tower : MonoBehaviour {
         }
         
 	}
+
 
     private void SetTargetEnemy()
     {
@@ -80,5 +81,18 @@ public class Tower : MonoBehaviour {
     {
         var emissionModule = projectile.emission;
         emissionModule.enabled = isActive;
+    }
+
+    private void LookAtEnemy()
+    {
+        float distaceToEnemy = Vector3.Distance(targetEnemy.transform.position, gameObject.transform.position);
+        if (distaceToEnemy <= attackRange)
+        {
+            objectToPan.LookAt(targetEnemy);
+        }
+        else
+        {
+            //Do nothing
+        }
     }
 }

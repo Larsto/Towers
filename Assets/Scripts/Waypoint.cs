@@ -8,8 +8,6 @@ public class Waypoint : MonoBehaviour {
     public Waypoint exploredFrom;
     public bool isPlaceable = true;
 
-    [SerializeField] Tower towerPrefab;
-
     Vector2Int gridPos;
 
     const int gridSize = 10;
@@ -43,14 +41,12 @@ public class Waypoint : MonoBehaviour {
         {
             if (isPlaceable)
             {
-                Debug.Log(gameObject.name + " You can place here!");
-                Instantiate(towerPrefab, transform.position, Quaternion.identity);
-                isPlaceable = false;
+                FindObjectOfType<TowerFactory>().AddTower(this);
             }
 
             else
             {
-                Debug.Log(gameObject.name + " No way hose!");
+                Debug.Log(gameObject.name + " Can't place here!");
             }
         }
     }

@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToPan: {fileID: 4126937786967364}
-  attackRange: 40
+  attackRange: 30
   projectile: {fileID: 198902064491279342}
 --- !u!136 &136005136901712982
 CapsuleCollider:
