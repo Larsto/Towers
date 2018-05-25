@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
     [SerializeField] List<Waypoint> path;
+    [SerializeField] float movementPeriod = 1;
+    [SerializeField] ParticleSystem goalParticle;
+    [SerializeField] AudioClip goalSound;
+
     // Use this for initialization
     void Start ()
     {
@@ -25,9 +29,17 @@ public class EnemyMovement : MonoBehaviour {
         foreach (Waypoint waypoint in path)
         {
             transform.position = waypoint.transform.position;
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(movementPeriod);
         }
-        Debug.Log("Ending patrol.");
+        SelfDestruct();
+    }
+
+    private void SelfDestruct()
+    {
+        GetComponent<AudioSource>().PlayOneShot(goalSound);
+        var vfx = Instantiate(goalParticle, transform.position, Quaternion.identity);
+        vfx.Play();
+        Destroy(gameObject);
     }
 
 }

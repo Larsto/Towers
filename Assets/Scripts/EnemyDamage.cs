@@ -9,7 +9,16 @@ public class EnemyDamage : MonoBehaviour {
     [SerializeField] Collider body;
     [SerializeField] ParticleSystem hitParticles;
     [SerializeField] ParticleSystem deathParticle;
+    [SerializeField] AudioClip enemyHit;
+    [SerializeField] AudioClip enemyDeath;
 
+    AudioSource myAudioSource;
+
+    private void Start()
+    {
+        myAudioSource = GetComponent<AudioSource>();
+    }
+    
 
     private void OnParticleCollision(GameObject other)
     {
@@ -25,12 +34,15 @@ public class EnemyDamage : MonoBehaviour {
     {
         hitParticles.Play();
         hits = hits - 1;
+        myAudioSource.PlayOneShot(enemyHit);
     }
 
     private void KillEnemy()
     {
+        
         var vfx = Instantiate(deathParticle, transform.position, Quaternion.identity);
         vfx.Play();
+        AudioSource.PlayClipAtPoint(enemyDeath, Camera.main.transform.position);
         Destroy(gameObject);
     }
 }

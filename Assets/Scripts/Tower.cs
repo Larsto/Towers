@@ -8,12 +8,14 @@ public class Tower : MonoBehaviour {
     [SerializeField] Transform objectToPan;
     [SerializeField] float attackRange = 10;
     [SerializeField] ParticleSystem projectile;
+    [SerializeField] AudioClip laserSound;
+    public Waypoint baseWaypoint;
 
     Transform targetEnemy;
     // Use this for initialization
     void Start () {
-		
-	}
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {

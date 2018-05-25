@@ -309,6 +309,7 @@ MonoBehaviour:
   secondsBetweenSpawns: 5
   enemyPrefab: {fileID: 114662788226744492, guid: f7f7396a575a07649a530368645b7749,
     type: 2}
+  enemyParentTransform: {fileID: 332389923}
 --- !u!4 &425648762 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4557869541529606, guid: 709d4e37e05405446adbf7bc654d847d,
@@ -852,7 +853,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 114539951885327414, guid: 878c01fe6e5085b4fba6af7d3e8f0675,
     type: 2}
-  towerLimit: 5
+  towerLimit: 4
+  towerParentTransform: {fileID: 1560219637}
 --- !u!1001 &1451889586
 Prefab:
   m_ObjectHideFlags: 0
@@ -1019,7 +1021,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1560219637}
-  - component: {fileID: 1560219638}
   m_Layer: 0
   m_Name: Towers
   m_TagString: Untagged
@@ -1040,17 +1041,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1560219638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1560219636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbe3b7cbb1194eb47ac64eb94f841d5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1597082486 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4557869541529606, guid: 709d4e37e05405446adbf7bc654d847d,
